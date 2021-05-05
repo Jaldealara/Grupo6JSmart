@@ -84,8 +84,14 @@ public class SeleniumBase {
         espera(8000);
     }
 
+
     public void selectCantidad(By locator, String nroCantidad){
         Select cantidad = new Select(findElement(locator));
         cantidad.selectByVisibleText(nroCantidad);
     }
+    public void selectCantidadValue(By locator,String nroCantidad){
+        Select cantidad = new Select(findElement(locator));
+        cantidad.selectByValue(nroCantidad);
+    }
+
 }

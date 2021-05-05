@@ -2,6 +2,7 @@ package pageobject.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import pageobject.base.SeleniumBase;
 
 public class JetSmartHotelesPage extends SeleniumBase {
@@ -9,11 +10,13 @@ public class JetSmartHotelesPage extends SeleniumBase {
         super(driver);
     }
 
-    private By filtroMayorPrecio = By.xpath("(//div[@class='bui-checkbox__label filter_item css-checkbox'])[5]");
+    private By filtroMayorPrecio = By.xpath("(//div[@class='bui-checkbox__label filter_item css-checkbox'])[5]"); //a,b,c se quiere la C,  c[2]
+
     private By listaHoteles = By.xpath("(//div[@class='bui-checkbox__label filter_item css-checkbox'])[5]");
-    private By filtroDesayuno = By.xpath("(//*[@id='filter_mealplan']//*[@class='bui-checkbox__label filter_item css-checkbox'])[2]");
+    private By filtroDesayuno = By.xpath("(//div[@class='bui-checkbox__label filter_item css-checkbox ']//span[contains(text(),'Desayuno incluido')])[1]");
     private By textoPrecioHotel = By.xpath("(//*[@class='bui-price-display__value prco-inline-block-maker-helper '])[1]");
     private By textoDesayuno = By.xpath("(//sup[@class='sr_room_reinforcement'])[1]");
+
 
     private By origenNuevaBusqueda = By.xpath("//input[@id='ss']");
     private By listaDelugares = By.xpath("//li[@data-i='0']");
@@ -26,6 +29,7 @@ public class JetSmartHotelesPage extends SeleniumBase {
     }
 
     public int seleccionFiltroMayorPrecio() throws InterruptedException {
+       //WebElement ultimoValor = findElements(filtroMayorPrecio).get(findElements(filtroMayorPrecio).size()-1);
         click(filtroMayorPrecio);
         int longitud = getText(textoPrecioHotel).length();
         espera(3000);
@@ -35,6 +39,11 @@ public class JetSmartHotelesPage extends SeleniumBase {
     public void seleccionarFiltroDesayuno() throws InterruptedException{
         isDisplayed(listaHoteles);
         click(filtroDesayuno);
+        espera(4000);
+    }
+    public void filtroCancelacionGratis() throws InterruptedException {
+        isDisplayed(listaHoteles);
+        click(filtroCancelacióngratis);
         espera(4000);
     }
 
@@ -71,9 +80,7 @@ public class JetSmartHotelesPage extends SeleniumBase {
         }
         return resultado;
     }
-
-
-
-
-
+    public void clickBtnVerDisponibilidad(){
+        click(btnVerDisponibilidad);
+    }
 }

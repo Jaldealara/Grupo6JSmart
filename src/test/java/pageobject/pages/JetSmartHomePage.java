@@ -19,6 +19,9 @@ public class JetSmartHomePage extends SeleniumBase{
     public JetSmartHomePage(WebDriver driver) {
         super(driver);
     }
+
+
+
     //repositorio objetos JetSmartHomePAge
     private By btnPopUpClose = By.xpath("//div[@class='modal-header']//button[@type='button']");
     private By txtNombreSuscribete = By.xpath("//input[@id='name']");
@@ -27,6 +30,7 @@ public class JetSmartHomePage extends SeleniumBase{
     private By btnSuscribete = By.xpath("//span[contains(text(),'Suscríbete')]");
     private By btnPopUp2Open = By.xpath("//div[@class='menu-close']");
     private By btnPopUp2Close = By.xpath("//div[@class='menu-open']");
+
 
     //origen
     private By inputLugarOrigen = By.xpath("//input[@placeholder='Origen']");
@@ -94,7 +98,23 @@ public class JetSmartHomePage extends SeleniumBase{
     public void cerrarModuloSuscribete(){
         if(isDisplayed(btnPopUpClose)){
             click(btnPopUpClose);
+
         }
+    /*
+     driver.manage().window().maximize();
+        driver.get("https://jetsmart.com/cl/es/");
+        WebDriverWait Retardo = new WebDriverWait(driver, 8);
+        Thread.sleep(2000);
+        Retardo.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='menu-close']"))).click();
+        driver.findElement(By.xpath("//div[@class='menu-open']")).click();
+        Retardo.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='menu-open']")));
+        Thread.sleep(2000);
+
+     */
+
+
+
+
     }
     public void suscribirseEnPopUp(){
         if (isDisplayed(txtNombreSuscribete)){

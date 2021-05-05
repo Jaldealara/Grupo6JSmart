@@ -32,7 +32,7 @@ public class jetSmart_Test {
     @Test
     public void Caso4JSHoteles() throws InterruptedException{
         jetSmart_Hoteles Hoteles= new jetSmart_Hoteles();
-        Assert.assertEquals("Prueba de filtros exitosa",Hoteles.JSH004("Buenos Aires","20-junio-2021","1-julio-2021","1","1","0"));
+        Assert.assertEquals("Prueba de filtros exitosa",Hoteles.JSH004("Buenos Aires","20-unio-2021","1-julio-2021","1","1","0"));
         System.out.println("test 4 exitoso");
     }
     @Test
