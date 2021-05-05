@@ -1,7 +1,9 @@
 package pageobject.base;
 
 
+
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import java.util.List;
@@ -53,6 +55,7 @@ public class SeleniumBase {
         }
     }
 
+
     public void goToUrl(String url){
         driver.get(url);
     }
@@ -61,7 +64,11 @@ public class SeleniumBase {
         return driver.getTitle();
     }
 
+    public void switchTo (int n) { driver.switchTo().frame(n); }
 
-
-
+    public void clear (By locator){ findElement( locator).clear(); }
+    public void sendKeysDerecha(By locator){ findElement(locator).sendKeys(Keys.ARROW_RIGHT); }
+    public void sendKeysEnter (By locator){ findElement(locator).sendKeys(Keys.ENTER);}
+    public void espera (int sleep) throws InterruptedException {Thread.sleep(sleep);
+    }
 }
