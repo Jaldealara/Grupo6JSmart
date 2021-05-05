@@ -14,11 +14,11 @@ public class atc01_testCase extends TestBase {
         jsHomePage = new JetSmartHomePage(driver);
         jsHomePage.goToUrl("https://jetsmart.com/cl/es/");
         jsHomePage.cerrarModuloSuscribete();
-
         jsHomePage.ingresarOrigenVuelos();
         jsHomePage.ingresarDestinoVuelos();
         jsHomePage.ingresarFechaIda();
         jsHomePage.IngresarFechaVuelta();
+        System.out.println("kdjfldksfj");
     }
     @Test
     public void casoVuelo1()throws InterruptedException{
