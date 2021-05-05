@@ -6,6 +6,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
+
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -70,5 +73,19 @@ public class SeleniumBase {
     public void sendKeysDerecha(By locator){ findElement(locator).sendKeys(Keys.ARROW_RIGHT); }
     public void sendKeysEnter (By locator){ findElement(locator).sendKeys(Keys.ENTER);}
     public void espera (int sleep) throws InterruptedException {Thread.sleep(sleep);
+
+    }
+    public  void switchToPestana(int p1, int p2) throws InterruptedException {
+        driver.switchTo().defaultContent();
+        ArrayList<String> tabs2 = new ArrayList<String> (driver.getWindowHandles()); //array de cambio de pestana
+        driver.switchTo().window(tabs2.get(p1));
+        driver.close();
+        driver.switchTo().window(tabs2.get(p2));
+        espera(8000);
+    }
+
+    public void selectCantidad(By locator, String nroCantidad){
+        Select cantidad = new Select(findElement(locator));
+        cantidad.selectByVisibleText(nroCantidad);
     }
 }

@@ -25,6 +25,8 @@ public class JetSmartHomePage extends SeleniumBase{
     private By txtApellidoSuscribete = By.xpath("//input[@id='lastname']");
     private By txtEmailSuscribete = By.xpath("//input[@id='email']");
     private By btnSuscribete = By.xpath("//span[contains(text(),'Suscríbete')]");
+    private By btnPopUp2Open = By.xpath("//div[@class='menu-close']");
+    private By btnPopUp2Close = By.xpath("//div[@class='menu-open']");
 
     //origen
     private By inputLugarOrigen = By.xpath("//input[@placeholder='Origen']");
@@ -55,6 +57,7 @@ public class JetSmartHomePage extends SeleniumBase{
     private By mensajeError = By.xpath("//div[@class='dg-pax-quantity-message']");
 
     //--------------------hoteles-------------------------------------------------------
+    private By btnBusquedaFormulario = By.xpath("//*[@class='b-aff__submit--button']");
     private By clickHotelesH =By.xpath("//*[@class='jsh-icon jsh-bed']");
     private By destinoOrigenH =By.xpath("//*[@id='b_destination']");
     private By listaCiudadesH =By.xpath("//*[@class='ui-autocomplete ui-front ui-menu ui-widget ui-widget-content']");
@@ -66,6 +69,9 @@ public class JetSmartHomePage extends SeleniumBase{
     private By botonBusqueda = By.xpath("//button[@id='rt_button']");
     private By diasTotalesIdaH=By.xpath("//*[@data-handler='selectDay']");
     private By arrowNextH = By.xpath("//*[@class='ui-icon ui-icon-circle-triangle-e']");
+    private By nroHabitaciones = By.xpath("//*[@name='no_rooms']");
+    private By nroAdultos = By.xpath("//*[@name='group_adults']");
+    private By nroNinos = By.xpath("//*[@name='group_children']");
     //String fechaSalidaHoteles ="3-julio-2021";
 
 
@@ -80,6 +86,10 @@ public class JetSmartHomePage extends SeleniumBase{
     private By calendarioTraslados= By.xpath("//input[@id='input-pickup-date']");
     private By horaTraslados = By.xpath("//input[@id='ct-time-picker-pick-up-input']");
     String fechaIdaTraslados= "20-05-2021";
+
+
+
+
     //keyword Driven
     public void cerrarModuloSuscribete(){
         if(isDisplayed(btnPopUpClose)){
@@ -93,6 +103,14 @@ public class JetSmartHomePage extends SeleniumBase{
             type("email@email.em",txtEmailSuscribete);
             click(btnSuscribete);
         }
+    }
+
+    public void popUP2Close() throws InterruptedException {
+        isDisplayed(btnPopUp2Open);
+        click(btnPopUp2Open);
+        isDisplayed(btnPopUp2Close);
+        click(btnPopUp2Close);
+        espera(2000);
     }
     public void ingresarOrigenVuelos(){
         click(inputLugarOrigen);
@@ -165,11 +183,11 @@ public class JetSmartHomePage extends SeleniumBase{
     // hoteles
 
 
-    public void lugarDeDestinoHoteles (){
+    public void lugarDeDestinoHoteles (String lugarDestino){
         click(clickHotelesH);
         switchTo(0);
         clear(destinoOrigenH);
-        type("Buenos Aires",destinoOrigenH);
+        type(lugarDestino,destinoOrigenH);
         isDisplayed(listaCiudadesH);
         click(seleccionCiudadH);
 
@@ -261,5 +279,24 @@ public class JetSmartHomePage extends SeleniumBase{
                 numeroClicks++;
             }
         }
+    }
+
+    public void seleccionarNroHabitaciones(String habitaciones){
+        click(nroHabitaciones);
+        selectCantidad(nroHabitaciones,habitaciones);
+
+    }
+    public void seleccionarNroAdultos(String adultos){
+        click(nroAdultos);
+        selectCantidad(nroAdultos,adultos);
+    }
+    public void seleccionarNroNinos(String ninos){
+        click(nroNinos);
+        selectCantidad(nroNinos,ninos);
+    }
+
+
+    public void btnBusquedaHotel(){
+        click(btnBusquedaFormulario);
     }
 }
