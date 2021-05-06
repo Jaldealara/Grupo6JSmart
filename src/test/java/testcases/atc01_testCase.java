@@ -13,17 +13,6 @@ public class atc01_testCase extends TestBase {
     protected JetSmartVuelosPage jsVuelosPage;
     protected JetSmartTrasladosPage jetSmartTrasladosPage;
     @Test
-    public void atc01_test() throws InterruptedException {
-        jsHomePage = new JetSmartHomePage(driver);
-        jsHomePage.goToUrl("https://jetsmart.com/cl/es/");
-        jsHomePage.cerrarModuloSuscribete();
-
-        jsHomePage.ingresarOrigenVuelos("Santiago");
-        jsHomePage.ingresarDestinoVuelos("Arica");
-        jsHomePage.ingresarFechaIda();
-        jsHomePage.ingresarFechaVuelta();
-    }
-    @Test
     public void casoVuelo1()throws InterruptedException{
 
         jsHomePage = new JetSmartHomePage(driver);

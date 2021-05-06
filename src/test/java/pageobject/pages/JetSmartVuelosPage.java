@@ -54,7 +54,8 @@ public class JetSmartVuelosPage extends SeleniumBase {
         click(btnPaqueteFull);
     }
 
-    public void btnContinuarDatosPasajeros(){
+    public void btnContinuarDatosPasajeros() throws InterruptedException {
+        espera(2000);
         click(btnContiunarResumen);
         isDisplayed(esperaTitulo);
     }
