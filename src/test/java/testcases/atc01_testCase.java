@@ -3,10 +3,7 @@ package testcases;
 
 import org.junit.Assert;
 import org.junit.Test;
-import pageobject.pages.JetSmartHomePage;
-import pageobject.pages.JetSmartHotelesPage;
-import pageobject.pages.JetSmartVerDisponibilidadHoteles;
-import pageobject.pages.JetSmartVuelosPage;
+import pageobject.pages.*;
 
 public class atc01_testCase extends TestBase {
 
@@ -14,6 +11,7 @@ public class atc01_testCase extends TestBase {
     protected JetSmartHotelesPage jsHotelesPage;
     protected JetSmartVerDisponibilidadHoteles jetSmartVerDisponibilidadHoteles;
     protected JetSmartVuelosPage jsVuelosPage;
+    protected JetSmartTrasladosPage jetSmartTrasladosPage;
     @Test
     public void atc01_test() throws InterruptedException {
         jsHomePage = new JetSmartHomePage(driver);
@@ -71,14 +69,9 @@ public class atc01_testCase extends TestBase {
         jsVuelosPage.clickBtnContinuar();
         jsVuelosPage.validacionTitulo();
 
-
-
-
-
-
     }
 
-
+    //--------------LARGA HOTELES-----------------------------------
     @Test
     public void caso04Hoteles() throws InterruptedException {
         jsHomePage = new JetSmartHomePage(driver);
@@ -116,7 +109,6 @@ public class atc01_testCase extends TestBase {
         int longitud = jsHotelesPage.seleccionFiltroMayorPrecio();
         jsHotelesPage.modificacionBusqueda();
         jsHotelesPage.validacionDeBusqueda(longitud,"Arica");
-
     }
     @Test
     public void caso06Hoteles() throws InterruptedException {
@@ -146,14 +138,26 @@ public class atc01_testCase extends TestBase {
 
 
     }
+    //--------------LARGA TRASLADOS----------------------------------------
     @Test
     public void trasladosPrueba () throws InterruptedException {
         jsHomePage = new JetSmartHomePage(driver);
+        jetSmartTrasladosPage = new JetSmartTrasladosPage(driver);
+
         jsHomePage.goToUrl("https://jetsmart.com/cl/es/");
         jsHomePage.cerrarModuloSuscribete();
         jsHomePage.lugarOrigenTraslados();
         jsHomePage.lugarDestinoTraslados();
         jsHomePage.fechaIdaTraslados();
+        jsHomePage.seleccionarHoraTraslados();
+        jsHomePage.seleccionarPasajeros();
+        jsHomePage.botonBuscarTraslados();
+        jsHomePage.switchToPestana(0,1);
+        String resul = jetSmartTrasladosPage.validacionResultado();
+        System.out.println(resul);
+
+
+
     }
 }
 

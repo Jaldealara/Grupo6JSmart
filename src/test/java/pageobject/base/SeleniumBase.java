@@ -71,7 +71,11 @@ public class SeleniumBase {
 
     public void clear (By locator){ findElement( locator).clear(); }
     public void sendKeysDerecha(By locator){ findElement(locator).sendKeys(Keys.ARROW_RIGHT); }
-    public void sendKeysEnter (By locator){ findElement(locator).sendKeys(Keys.ENTER);}
+    public void sendKeysEnter (By locator){ findElement(locator).sendKeys(Keys.ENTER); }
+    public void sendKeysAbajo (By locator){ findElement(locator).sendKeys(Keys.DOWN); }
+
+
+
     public void espera (int sleep) throws InterruptedException {Thread.sleep(sleep);
 
     }

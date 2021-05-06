@@ -97,6 +97,11 @@ public class JetSmartHomePage extends SeleniumBase{
     private By calendarioTraslados= By.xpath("//input[@id='input-pickup-date']");
     private By horaTraslados = By.xpath("//input[@id='ct-time-picker-pick-up-input']");
     String fechaIdaTraslados= "20-05-2021";
+    private By botonEntrarTraslado = By.xpath("//*[@class='ct-btn ct-btn-p gt-is-valid']");
+    private By pasajerosTraslado = By.xpath("//*[@id='passenger-number-input']");
+
+
+
 
 
 
@@ -108,20 +113,6 @@ public class JetSmartHomePage extends SeleniumBase{
             click(btnPopUpClose);
 
         }
-    /*
-     driver.manage().window().maximize();
-        driver.get("https://jetsmart.com/cl/es/");
-        WebDriverWait Retardo = new WebDriverWait(driver, 8);
-        Thread.sleep(2000);
-        Retardo.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='menu-close']"))).click();
-        driver.findElement(By.xpath("//div[@class='menu-open']")).click();
-        Retardo.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='menu-open']")));
-        Thread.sleep(2000);
-
-     */
-
-
-
 
     }
     public void suscribirseEnPopUp(){
@@ -226,16 +217,8 @@ public class JetSmartHomePage extends SeleniumBase{
         click(botonBusquedaVuelos);
     }
 
-
-
-
-
-
-
-
-
-    // hoteles
-
+    //-----------------------------ACA LARGA HOTELES-------------------------------------
+    //_---------------------------------------------------------------------------------
 
     public void lugarDeDestinoHoteles (String lugarDestino){
         click(clickHotelesH);
@@ -290,8 +273,27 @@ public class JetSmartHomePage extends SeleniumBase{
             }
         }
     }
+    public void seleccionarNroHabitaciones(String habitaciones){
+        click(nroHabitaciones);
+        selectCantidad(nroHabitaciones,habitaciones);
 
-    //traslados
+    }
+    public void seleccionarNroAdultos(String adultos){
+        click(nroAdultos);
+        selectCantidad(nroAdultos,adultos);
+    }
+    public void seleccionarNroNinos(String ninos){
+        click(nroNinos);
+        selectCantidad(nroNinos,ninos);
+    }
+
+
+    public void btnBusquedaHotel(){
+        click(btnBusquedaFormulario);
+    }
+
+    //-----------------------------ACA LARGA TRASLADOS-------------------------------------
+    //_---------------------------------------------------------------------------------
 
     public void lugarOrigenTraslados () {
         click(botonIngresoTraslados);
@@ -302,11 +304,12 @@ public class JetSmartHomePage extends SeleniumBase{
         isDisplayed(listaOrigenTraslados);
         click(listaOrigenTraslados);
     }
-    public void lugarDestinoTraslados (){
+    public void lugarDestinoTraslados () throws InterruptedException {
 //aqui puede ir una espera de invisibilidad
 
         type("Bariloche", destinoTraslados);
         isDisplayed(listadestinoTraslados);
+        espera(500);
         click(listadestinoTraslados);
 
     }
@@ -335,22 +338,22 @@ public class JetSmartHomePage extends SeleniumBase{
         }
     }
 
-    public void seleccionarNroHabitaciones(String habitaciones){
-        click(nroHabitaciones);
-        selectCantidad(nroHabitaciones,habitaciones);
-
+    public void seleccionarHoraTraslados() throws InterruptedException {
+        for (int i = 0; i < 3; i++) {
+            sendKeysAbajo(horaTraslados);
+        }
+        sendKeysEnter(horaTraslados);
+        espera(500);
     }
-    public void seleccionarNroAdultos(String adultos){
-        click(nroAdultos);
-        selectCantidad(nroAdultos,adultos);
-    }
-    public void seleccionarNroNinos(String ninos){
-        click(nroNinos);
-        selectCantidad(nroNinos,ninos);
+    public void seleccionarPasajeros(){
+        sendKeysAbajo(pasajerosTraslado);
+        sendKeysEnter(pasajerosTraslado);
     }
 
-
-    public void btnBusquedaHotel(){
-        click(btnBusquedaFormulario);
+    public void botonBuscarTraslados(){
+        click(botonEntrarTraslado);
     }
+
+
+
 }
