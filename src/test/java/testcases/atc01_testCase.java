@@ -140,14 +140,14 @@ public class atc01_testCase extends TestBase {
     }
     //--------------LARGA TRASLADOS----------------------------------------
     @Test
-    public void trasladosPrueba () throws InterruptedException {
+    public void trasladosCaso10 () throws InterruptedException {
         jsHomePage = new JetSmartHomePage(driver);
         jetSmartTrasladosPage = new JetSmartTrasladosPage(driver);
 
         jsHomePage.goToUrl("https://jetsmart.com/cl/es/");
         jsHomePage.cerrarModuloSuscribete();
-        jsHomePage.lugarOrigenTraslados();
-        jsHomePage.lugarDestinoTraslados();
+        jsHomePage.lugarOrigenTraslados("Buenos Aires");
+        jsHomePage.lugarDestinoTraslados("Bariloche");
         jsHomePage.fechaIdaTraslados();
         jsHomePage.seleccionarHoraTraslados();
         jsHomePage.seleccionarPasajeros();
@@ -156,7 +156,46 @@ public class atc01_testCase extends TestBase {
         String resul = jetSmartTrasladosPage.validacionResultado();
         System.out.println(resul);
 
+    }
+    @Test
+    public void trasladosCaso11() throws InterruptedException {
+        jsHomePage = new JetSmartHomePage(driver);
+        jetSmartTrasladosPage = new JetSmartTrasladosPage(driver);
+        jsHomePage.goToUrl("https://jetsmart.com/cl/es/");
+        jsHomePage.cerrarModuloSuscribete();
+        jsHomePage.lugarOrigenTraslados("Buenos Aires");
+        jsHomePage.lugarDestinoTraslados("Bariloche");
+        jsHomePage.fechaIdaTraslados();
+        jsHomePage.seleccionarHoraTraslados();
+        jsHomePage.seleccionarPasajeros();
+        jsHomePage.botonBuscarTraslados();
+        jsHomePage.switchToPestana(0,1);
+        jetSmartTrasladosPage.cierrePopUp();
+        jetSmartTrasladosPage.seleccionMoneda("USD");
+        jetSmartTrasladosPage.btnBuscar();
+        String resultado=jetSmartTrasladosPage.monedaPrecioTraslado();
+        System.out.println(resultado);
+    }
+    @Test
+    public void trasladoCaso12 () throws InterruptedException {
+        jsHomePage = new JetSmartHomePage(driver);
+        jetSmartTrasladosPage = new JetSmartTrasladosPage(driver);
+        jsHomePage.goToUrl("https://jetsmart.com/cl/es/");
+        jsHomePage.cerrarModuloSuscribete();
+        jsHomePage.lugarOrigenTraslados("Buenos Aires - Ministro Pistarini");
+        jsHomePage.lugarDestinoTraslados("Estadio monumental");
+        jsHomePage.fechaIdaTraslados();
+        jsHomePage.seleccionarHoraTraslados();
+        jsHomePage.seleccionarPasajeros();
+        jsHomePage.botonBuscarTraslados();
+        jsHomePage.switchToPestana(0,1);
 
+        jetSmartTrasladosPage.botonReservaTraslado();
+        jetSmartTrasladosPage.rellenarDatos("juan separado","juan12@gmail.com","972447281");
+        jetSmartTrasladosPage.clickPage();
+        jetSmartTrasladosPage.nroDeVuelo("asddsdqwdqwd");
+        String result=jetSmartTrasladosPage.confirmacion();
+        System.out.println(result);
 
     }
 }

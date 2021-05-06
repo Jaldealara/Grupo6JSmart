@@ -178,6 +178,7 @@ public class jetSmart_Traslados {
         driver.findElement(By.xpath("//*[@id='gt-customer-email']")).sendKeys(mail);
         driver.findElement(By.xpath("//*[@id='gt-customer-confirm-email']")).sendKeys(mail);
         driver.findElement(By.xpath("//*[@id='gt-customer-mobile-number']")).sendKeys(nroTel);
+
         driver.findElement(By.xpath("(//*[@class='ctc-switch__label'])[1]")).click();
         driver.findElement(By.xpath("//*[@id='gt-pickup-flight-number']")).sendKeys(nroVuelo);
         driver.findElement(By.xpath("//*[@class='ctc-button ctc-button--full ctc-button--primary']")).click();

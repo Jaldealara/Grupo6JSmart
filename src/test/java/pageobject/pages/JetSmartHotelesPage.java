@@ -11,7 +11,6 @@ public class JetSmartHotelesPage extends SeleniumBase {
     }
 
     private By filtroMayorPrecio = By.xpath("(//div[@class='bui-checkbox__label filter_item css-checkbox'])[5]"); //a,b,c se quiere la C,  c[2]
-
     private By listaHoteles = By.xpath("(//div[@class='bui-checkbox__label filter_item css-checkbox'])[5]");
     private By filtroDesayuno = By.xpath("(//div[@class='bui-checkbox__label filter_item css-checkbox ']//span[contains(text(),'Desayuno incluido')])[1]");
     private By textoPrecioHotel = By.xpath("(//*[@class='bui-price-display__value prco-inline-block-maker-helper '])[1]");

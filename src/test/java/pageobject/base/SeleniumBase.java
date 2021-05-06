@@ -86,9 +86,8 @@ public class SeleniumBase {
         driver.close();
         driver.switchTo().window(tabs2.get(p2));
         espera(8000);
+
     }
-
-
     public void selectCantidad(By locator, String nroCantidad){
         Select cantidad = new Select(findElement(locator));
         cantidad.selectByVisibleText(nroCantidad);

@@ -295,19 +295,19 @@ public class JetSmartHomePage extends SeleniumBase{
     //-----------------------------ACA LARGA TRASLADOS-------------------------------------
     //_---------------------------------------------------------------------------------
 
-    public void lugarOrigenTraslados () {
+    public void lugarOrigenTraslados (String origen) {
         click(botonIngresoTraslados);
         switchTo(2);
         click(clickSoloIda);
         click(origenTraslados);
-        type("Buenos Aires", origenTraslados);
+        type(origen, origenTraslados);
         isDisplayed(listaOrigenTraslados);
         click(listaOrigenTraslados);
     }
-    public void lugarDestinoTraslados () throws InterruptedException {
+    public void lugarDestinoTraslados (String destino) throws InterruptedException {
 //aqui puede ir una espera de invisibilidad
 
-        type("Bariloche", destinoTraslados);
+        type(destino, destinoTraslados);
         isDisplayed(listadestinoTraslados);
         espera(500);
         click(listadestinoTraslados);
