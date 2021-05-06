@@ -205,7 +205,6 @@ public class jetSmart_Vuelos {
 
 
         //20.-espera hasta que aparece titulo detalle de pasajero
-
         Retardo.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@class='main-title']")));
 
         //21.-  completa formulario

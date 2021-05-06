@@ -42,7 +42,7 @@ public class JetSmartHomePage extends SeleniumBase{
     private By fechaOrigen = By.xpath("(//div[@class='dayContainer'])[1]");
     private By textoMes = By.xpath("(//*[@class='cur-month'])[1]");
 
-    String fechaIda="Junio 20,2021";
+    String fechaIda="Junio 20, 2021";
     private By ingresoFecha = By.xpath("(//div[@class='dayContainer'] //span[@aria-label='"+fechaIda+"'])[1]");
     private By arrowNext = By.xpath("(//span[@class='flatpickr-next-month'])[1]");
 
@@ -51,7 +51,7 @@ public class JetSmartHomePage extends SeleniumBase{
     private  By textoMesVuelta = By.xpath("(//span[@class='cur-month'])[3]");
     private  By ingresoFechaDestino= By.xpath("(//div[@class='dayContainer']//span[@aria-label='"+fechaVuelta+"'])[1]");
     private  By arrowNextVuelta= By.xpath("(//span[@class='flatpickr-next-month'])[2]");
-
+    private By botonBusquedaVuelos = By.xpath("//button[@id='rt_button']");
     private By pestanaNPasajeros = By.xpath("//input[@ref='paxSummary']");
     private By cantNAdultos = By.xpath("//pax-amount[@ref='adults']/div[contains(text(),'+')]");
     private By cantNInfantes= By.xpath("//pax-amount[@ref='infants']/div[contains(text(),'+')]");
@@ -59,6 +59,13 @@ public class JetSmartHomePage extends SeleniumBase{
     private By listaCantidadPasajeros= By.xpath("//div[@class='dg-quantity-dropdown open']");
     private By restaCantidadInfantes= By.xpath("//pax-amount[@ref='infants']/div[contains(text(),'-')]");
     private By mensajeError = By.xpath("//div[@class='dg-pax-quantity-message']");
+    private By soloIdaVuelos= By.xpath("//label[@for='sbOneWayJourney']");
+    private By btnConfirmacionPasajeros= By.xpath("//button[@class='dg-button dg-pax-btn']");
+
+
+
+
+
 
     //--------------------hoteles-------------------------------------------------------
     private By btnBusquedaFormulario = By.xpath("//*[@class='b-aff__submit--button']");
@@ -70,7 +77,7 @@ public class JetSmartHomePage extends SeleniumBase{
     private By inputFechaIdaH= By.xpath("//*[@id='checkInDate']");
     private By inputFechaVueltaH= By.xpath("//*[@id='checkOutDate']");
     private By mesesHoteles =By.xpath("//*[@class='ui-datepicker-month']");
-    private By botonBusqueda = By.xpath("//button[@id='rt_button']");
+
     private By diasTotalesIdaH=By.xpath("//*[@data-handler='selectDay']");
     private By arrowNextH = By.xpath("//*[@class='ui-icon ui-icon-circle-triangle-e']");
     private By nroHabitaciones = By.xpath("//*[@name='no_rooms']");
@@ -95,7 +102,8 @@ public class JetSmartHomePage extends SeleniumBase{
 
 
     //keyword Driven
-    public void cerrarModuloSuscribete(){
+    public void cerrarModuloSuscribete() throws InterruptedException {
+        espera(2000);
         if(isDisplayed(btnPopUpClose)){
             click(btnPopUpClose);
 
@@ -132,20 +140,20 @@ public class JetSmartHomePage extends SeleniumBase{
         click(btnPopUp2Close);
         espera(2000);
     }
-    public void ingresarOrigenVuelos(){
+    public void ingresarOrigenVuelos(String lugarOrigenVuelos){
         click(inputLugarOrigen);
-        type("Santiago",inputLugarOrigen);
+        type(lugarOrigenVuelos,inputLugarOrigen);
         isDisplayed(listaDestinosOrigen);
         click(lugarLista);
 
     }
-    public void ingresarDestinoVuelos(){
-        type("Arica",inputLugarDestino);
+    public void ingresarDestinoVuelos(String lugarDestinoVuelos){
+        type(lugarDestinoVuelos,inputLugarDestino);
         isDisplayed(listaDestinosOrigen);
         click(lugarLista);
 
     }
-    public void ingresarFechaIda(){
+    public void ingresarFechaIda() {
         isDisplayed(fechaOrigen);
         findElement(textoMes); //tenemos comp
 
@@ -161,7 +169,7 @@ public class JetSmartHomePage extends SeleniumBase{
             }
         }
     }
-    public void IngresarFechaVuelta(){
+    public void ingresarFechaVuelta(){
         isDisplayed(fechaDestino);
         findElement(textoMesVuelta);
         String []  corteFechaVuelta=fechaVuelta.split(" "); //tomamos fecha ida (mes)
@@ -174,6 +182,8 @@ public class JetSmartHomePage extends SeleniumBase{
             }
         }
     }
+
+
     public String cantidadPasajeros() throws InterruptedException {
 
 
@@ -197,8 +207,32 @@ public class JetSmartHomePage extends SeleniumBase{
         String result = findElement(mensajeError).getText();
         return result;
     }
+    public void clickSoloIdaVuelos(){
+        click(soloIdaVuelos);
+    }
+
+    public void sumarPasajerosVuelos() throws InterruptedException {
+        click(pestanaNPasajeros);
+        espera(500);
+        isDisplayed(listaCantidadPasajeros);
+        click(cantNAdultos);
+        click(cantNninos);
+        click(btnConfirmacionPasajeros);
+        espera(1500);
+    }
+
     public void boton_Search(){
-        click(botonBusqueda); }
+
+        click(botonBusquedaVuelos);
+    }
+
+
+
+
+
+
+
+
 
     // hoteles
 
